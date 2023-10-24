@@ -58,23 +58,24 @@ function writeToFile(fileName, data) {
       if (err) {
         console.error(`Failed to write ${fileName} file: ${err}`);
       } else {
-        console.log(`${fileName} has been successfully generated!');
+        console.log(`${fileName} has been successfully generated!`);
       }
     });
-  }
+}
 
 // TODO: Create a function to initialize app
-
 function init() {
-    inquirer.prompt(questions).then((answers) => {
-      // Generate the README content based on user input
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      // Process user's answers here
       const readmeContent = `
-  # ${answers.projectTitle}
-  
-  ## Description
-  ${answers.projectDescription}
-  
-  ## Table of Contents
+# ${answers.projectTitle}
+
+## Description
+${answers.projectDescription}
+
+## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -103,9 +104,13 @@ For questions or inquiries, please contact:
 - Email: ${answers.email}
 `;
 
-// Write the README file
-writeToFile('README.md', readmeContent);
-});
+      // Write the generated README content to a file
+      writeToFile('README.md', readmeContent);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
+
 // Function call to initialize app
 init();
