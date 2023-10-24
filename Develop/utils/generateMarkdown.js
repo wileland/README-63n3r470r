@@ -43,10 +43,10 @@ For more details, see the [${license}](#license) file.
 
 // Function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `# ${data.projectTitle}
 
 ## Description
-${data.description}
+${data.projectDescription}
 
 ## Table of Contents
 - [Installation](#installation)
@@ -71,6 +71,105 @@ ${data.tests}
 ` : ''}
 
 ${renderLicenseSection(data.license)}
+
+${
+  // Screenshots section
+  data.screenshots
+    ? `
+## Screenshots
+${data.screenshots
+      .split(',')
+      .map((screenshot) => `![Screenshot](${screenshot.trim()})`)
+      .join('\n')}
+`
+    : ''
+}
+
+${
+  // Demo section
+  data.demoLink
+    ? `
+## Demo
+You can watch a demo of this project [here](${data.demoLink}).
+`
+    : ''
+}
+
+${
+  // Acknowledgments section
+  data.acknowledgments
+    ? `
+## Acknowledgments
+${data.acknowledgments
+      .split(',')
+      .map((acknowledgment) => `- ${acknowledgment.trim()}`)
+      .join('\n')}
+`
+    : ''
+}
+
+${
+  // Badges section
+  data.badges
+    ? `
+## Badges
+${data.badges
+      .split(',')
+      .map((badge) => badge.trim())
+      .join('\n')}
+`
+    : ''
+}
+
+${
+  // Documentation section
+  data.documentationLink
+    ? `
+## Documentation
+You can find the project's documentation [here](${data.documentationLink}).
+`
+    : ''
+}
+
+${
+  // Installation Scripts section
+  data.installationScripts
+    ? `
+## Installation Scripts
+${data.installationScripts}
+`
+    : ''
+}
+
+${
+  // Deployment section
+  data.deploymentInfo
+    ? `
+## Deployment
+${data.deploymentInfo}
+`
+    : ''
+}
+
+${
+  // Changelog section
+  data.changelog
+    ? `
+## Changelog
+${data.changelog}
+`
+    : ''
+}
+
+${
+  // Security section
+  data.securityInfo
+    ? `
+## Security
+${data.securityInfo}
+`
+    : ''
+}
 
 ## Questions
 For questions or inquiries, please contact:

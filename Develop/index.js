@@ -49,7 +49,52 @@ const questions = [
     type: 'input',
     name: 'email',
     message: 'Enter your email address:',
-  },
+    },
+    {
+    type: 'input',
+    name: 'screenshots',
+    message: 'Provide URLs to project screenshots (comma-separated):',
+    },
+    {
+    type: 'input',
+    name: 'demoLink',
+    message: 'Provide a link to a live demo or video demo:',
+    },
+    {
+    type: 'input',
+    name: 'acknowledgments',
+    message: 'Acknowledge any libraries, tools, or contributors (comma-separated):',
+    },
+    {
+    type: 'input',
+    name: 'badges',
+    message: 'Provide badge URLs for build status, code coverage, etc. (comma-separated):',
+    },
+    {
+    type: 'input',
+    name: 'documentationLink',
+    message: 'Provide a link to project documentation (if applicable):',
+    },
+    {
+    type: 'input',
+    name: 'installationScripts',
+    message: 'Provide installation scripts or commands (if applicable):',
+    },
+    {
+    type: 'input',
+    name: 'deploymentInfo',
+    message: 'Provide information on how to deploy your project (if applicable):',
+    },
+    {
+    type: 'input',
+    name: 'changelog',
+    message: 'Include a changelog or version history (if applicable):',
+    },
+    {
+    type: 'input',
+    name: 'securityInfo',
+    message: 'Address security considerations (if applicable):',
+    },
 ];
 
 // TODO: Create a function to write README file
@@ -61,53 +106,15 @@ function writeToFile(fileName, data) {
         console.log(`${fileName} has been successfully generated!`);
       }
     });
-}
+  }
 
 // TODO: Create a function to initialize app
 function init() {
-  inquirer
-    .prompt(questions)
-    .then((answers) => {
-      // Process user's answers here
-      const readmeContent = `
-# ${answers.projectTitle}
-
-## Description
-${answers.projectDescription}
-
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [License](#license)
-- [Questions](#questions)
-
-## Installation
-${answers.installation}
-
-## Usage
-${answers.usage}
-
-## Contributing
-${answers.contributing}
-
-## Tests
-${answers.tests}
-
-## License
-This project is licensed under the ${answers.license} License.
-
-## Questions
-For questions or inquiries, please contact:
-- GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})
-- Email: ${answers.email}
-`;
-
-      // Write the generated README content to a file
+    inquirer.prompt(questions).then((answers) => {
+      // Process user's answers and enhance the README content here
+      const readmeContent = generateMarkdown(answers);
       writeToFile('README.md', readmeContent);
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.error(error);
     });
 }
