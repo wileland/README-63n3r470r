@@ -56,14 +56,15 @@ const questions = [
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
       if (err) {
-        console.error(err);
+        console.error(`Failed to write ${fileName} file: ${err}`);
       } else {
-        console.log('README.md has been successfully generated!');
+        console.log(`${fileName} has been successfully generated!');
       }
     });
   }
 
 // TODO: Create a function to initialize app
+
 function init() {
     inquirer.prompt(questions).then((answers) => {
       // Generate the README content based on user input
@@ -74,19 +75,34 @@ function init() {
   ${answers.projectDescription}
   
   ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  // Add more sections as needed
-  
-  ## Installation
-  ${answers.installation}
-  
-  ## Usage
-  ${answers.usage}
-  
-  // Add more sections as needed
-  
-  `;
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [License](#license)
+- [Questions](#questions)
+
+## Installation
+${answers.installation}
+
+## Usage
+${answers.usage}
+
+## Contributing
+${answers.contributing}
+
+## Tests
+${answers.tests}
+
+## License
+This project is licensed under the ${answers.license} License.
+
+## Questions
+For questions or inquiries, please contact:
+- GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})
+- Email: ${answers.email}
+`;
+
 // Write the README file
 writeToFile('README.md', readmeContent);
 });
