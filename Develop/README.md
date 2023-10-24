@@ -20,7 +20,7 @@ To install this application, clone the repository, run 'npm install' to install 
 Users can use this application to quickly create professional README files for their new projects. Simply follow the prompts to enter project details, and the application will generate a README.md file
 
 ## Contributing
-Contributions are welcome! To contribute to this project, fork the repository, make changes, and submit pull requests. Please follow our Contribution Guidelines for more details.
+Contributions are welcome and in development. More to come!
 
 
 ## Tests
@@ -58,7 +58,8 @@ To install, run 'npm install inquirer axios'.
 
 
 ## Deployment
-This project is not intended for deployment as it is a command-line application.
+Repo: https://github.com/wileland/README-63n3r470r
+
 
 
 
